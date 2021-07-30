@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 
 const useGeolocation = () => {
   const [geolocation, setGeolocation] =
-    useState<string | GeolocationPosition>("");
+    useState<string | GeolocationCoordinates>("");
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      setGeolocation(position);
+      setGeolocation(position.coords);
     });
   }, []);
   return geolocation;

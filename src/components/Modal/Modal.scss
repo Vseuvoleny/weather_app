@@ -1,0 +1,13 @@
+.modal {
+  background: #fcfcfc;
+  z-index: 1000;
+  width: 100%;
+  position: absolute;
+
+  &.top {
+    left: 0;
+    top: 0;
+
+    border-radius: 0px 0px 30px 30px;
+  }
+}
