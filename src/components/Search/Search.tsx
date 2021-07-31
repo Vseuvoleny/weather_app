@@ -6,7 +6,6 @@ import "./Search.scss";
 import searchIcon from "../../assets/icons/searchIcon.svg";
 import location from "../../assets/icons/location.svg";
 import notifyIcon from "../../assets/icons/notifyIcon.svg";
-import useGeolocation from "../../utils/hooks/useGeolocation";
 import Modal from "../Modal/Modal";
 import SearchModal from "../SearchModal/SearchModal";
 
@@ -14,13 +13,7 @@ const Search = () => {
   const wrapper = cn("search");
   const [userCity, setUserCity] = useState("");
   const [isSearchActive, setIsSearchActive] = useState(false);
-  const geo = useGeolocation();
 
-  useEffect(() => {
-    if (geo) {
-      const { latitude, longitude } = geo as GeolocationCoordinates;
-    }
-  }, [geo]);
   return (
     <div className={wrapper}>
       {isSearchActive && (
