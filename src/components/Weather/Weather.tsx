@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import cn from "classnames";
 import axios from "axios";
 import { intlFormat } from "date-fns";
@@ -13,6 +13,7 @@ const Weather = () => {
   const [currentWeather, setCurrentWeather] =
     useState<undefined | any>(undefined);
   const geo = useGeolocation();
+
   useEffect(() => {
     if (geo) {
       const { latitude, longitude } = geo;
@@ -28,7 +29,6 @@ const Weather = () => {
         });
     }
   }, [geo]);
-  console.log(currentWeather);
 
   return (
     <div className={classes}>
@@ -37,11 +37,9 @@ const Weather = () => {
           <div className={`${classes}__date`}>
             <span>Today, </span>
             <span className="day">
-              {" "}
               {intlFormat(new Date(), { day: "numeric" }, { locale: "en-EN" })}
             </span>
             <span className="month">
-              {" "}
               {intlFormat(new Date(), { month: "long" }, { locale: "en-EN" })}
             </span>
           </div>
@@ -52,15 +50,11 @@ const Weather = () => {
           <div className="weather-type">
             {currentWeather.weather[0].description}
           </div>
-          <picture className="icon">
-            <ReactSVG src={windy} />
-          </picture>
+          <ReactSVG className="icon" src={windy} />
           <div className="wind">
             wind <span></span> {currentWeather.wind.speed} km/h
           </div>
-          <picture className="icon">
-            <ReactSVG src={hum} />
-          </picture>
+          <ReactSVG className="icon" src={hum} />
           <div className="humid">
             humidity <span></span> {currentWeather.main.humidity} %
           </div>

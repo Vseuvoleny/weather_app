@@ -14,24 +14,40 @@ const Search = () => {
   const [userCity, setUserCity] = useState("");
   const [isSearchActive, setIsSearchActive] = useState(false);
 
+  const getUserGeolocation = () => {
+    const url = `https://geolocation-db.com/json/${process.env.REACT_APP_GEODB}`;
+    axios
+      .get(url)
+      .then(({ data }) => {
+        setUserCity(data.city);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(getUserGeolocation, []);
+
   return (
     <div className={wrapper}>
-      {isSearchActive && (
+      {/* {isSearchActive && (
         <Modal>
           <SearchModal />
         </Modal>
-      )}
-      <picture className={`${wrapper}__geo`}>
-        <ReactSVG src={location} />
-      </picture>
+      )} */}
+      {/* TODO create a portal fn */}
+      <ReactSVG
+        className={`${wrapper}__geo-icon`}
+        src={location}
+        onClick={getUserGeolocation}
+      />
+      <div
+        className={`${wrapper}__user-location`}
+        onClick={() => setIsSearchActive(true)}
+      >
+        <span className="city">{userCity || "Loading..."}</span>
+        <ReactSVG className="tab-toggle" src={searchIcon} />
+      </div>
 
-      <span className={`${wrapper}__city`}>Samara</span>
-      <picture className={`${wrapper}__tab-toggle`}>
-        <ReactSVG src={searchIcon} onClick={() => setIsSearchActive(true)} />
-      </picture>
-      <picture className={`${wrapper}__notify`}>
-        <ReactSVG src={notifyIcon} />
-      </picture>
+      <ReactSVG className={`${wrapper}__notify`} src={notifyIcon} />
     </div>
   );
 };

@@ -11,26 +11,20 @@ const SearchModal = () => {
   return (
     <div className={classes}>
       <div className={`${classes}__container`}>
-        <picture className="arrow-right">
-          <ReactSVG src={arrowRight} />
-        </picture>
+        <ReactSVG className="arrow-right" src={arrowRight} />
         <input
           className="search-input"
-          type="text"
+          type="search"
           name="city"
           placeholder="Search here"
         />
-        <picture className="mic-icon">
-          <ReactSVG src={mic} />
-        </picture>
+        <ReactSVG className="mic-icon" src={mic} />
       </div>
       <div className={`${classes}__recent-cities`}>
         <h6 className="title">Recent search</h6>
         <div className={`${classes}__cities-container`}>
           <div className={`${classes}__city`}>
-            <picture className="clock">
-              <ReactSVG src={clock} />
-            </picture>
+            <ReactSVG className="clock" src={clock} />
             <p className="city">Surabaya</p>
             <p className="temp">34° / 23°</p>
           </div>

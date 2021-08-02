@@ -1,26 +1,27 @@
 .search {
   display: flex;
   align-items: center;
-  &__geo {
+  &__geo-icon {
     margin-right: 24px;
-    height: 37px;
+    height: 21px;
+  }
+  &__user-location {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    .city {
+      display: block;
+      margin-right: 24px;
+      font-size: 24px;
+      line-height: 37px;
+      color: #fff;
+    }
+    .tab-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 37px;
+    }
   }
-  &__city {
-    display: block;
-    margin-right: 24px;
-    font-size: 24px;
-    line-height: 37px;
-    color: #fff;
-  }
-  &__tab-toggle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 37px;
-  }
+
   &__notify {
     margin-left: auto;
     display: flex;
