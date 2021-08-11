@@ -4,9 +4,11 @@ const useGeolocation = () => {
   const [geolocation, setGeolocation] =
     useState<undefined | GeolocationCoordinates>(undefined);
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setGeolocation(position.coords);
-    });
+    if (!geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setGeolocation(position.coords);
+      });
+    }
   }, []);
   return geolocation;
 };

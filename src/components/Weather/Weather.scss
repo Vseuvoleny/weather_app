@@ -1,14 +1,13 @@
 .weather {
   width: 100%;
   background: rgba(255, 255, 255, 0.3);
-  //   filter: blur(5px);
   border-radius: 20px;
+  // weather__wrapper
   &__wrapper {
     padding: 16px 70px 26px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     .temp {
       font-size: 100px;
       line-height: 153px;
@@ -24,33 +23,63 @@
       white-space: nowrap;
       padding-bottom: 30px;
     }
-    .wind {
-      padding-bottom: 16px;
-    }
-    .wind,
-    .humid {
+    .weather-desc {
       font-size: 18px;
       line-height: 28px;
       color: #ffffff;
       text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      span {
-        box-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
-        display: inline-block;
-        background: #ffffff;
+      display: flex;
+      width: 186px;
+      hr {
         width: 1px;
         height: 21px;
+        text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
+        background: #ffffff;
+        border: 0;
+        margin: 0 21px;
+      }
+      .title {
+        max-width: 40px;
+        width: 100%;
+      }
+      .title,
+      .index {
+        word-wrap: normal;
+        font-size: 16px;
+        line-height: 26px;
+        text-shadow: -1.85429px 2.78143px 0.927143px rgba(0, 0, 0, 0.1);
       }
       .icon {
-        padding-right: 22px;
+        width: 45px;
+        padding-right: 21px;
+        div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
   }
+  // weather__date
   &__date {
     text-align: center;
     font-size: 18px;
     line-height: 28px;
     text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.1);
     color: #ffffff;
+  }
+  // weather__icon
+  &__icon {
+    display: block;
+    text-align: center;
+    img {
+      object-fit: contain;
+      width: 130px;
+      height: 130px;
+    }
+  }
+  // weather-desc
+  &-desc.wind {
+    padding-bottom: 16px;
   }
 }
